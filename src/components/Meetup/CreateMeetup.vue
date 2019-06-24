@@ -82,9 +82,10 @@
 </template>
 
 <script>
-import moment from 'moment'
+import moment from 'moment';
+
 export default {
-  data () {
+  data() {
     return {
       title: '',
       location: '',
@@ -92,70 +93,69 @@ export default {
       description: '',
       date: new Date().toISOString(),
       time: new Date(),
-      image: null
-    }
+      image: null,
+    };
   },
-  created: function () {
-    const dateTime = moment()
-    this.date = dateTime.format('YYYY-MM-DD')
-    this.time = dateTime.format('HH:mm')
+  created() {
+    const dateTime = moment();
+    this.date = dateTime.format('YYYY-MM-DD');
+    this.time = dateTime.format('HH:mm');
   },
   computed: {
-    formIsValid () {
-      return this.title !== '' &&
-      this.location !== '' &&
-      this.imageUrl !== '' &&
-      this.description !== ''
+    formIsValid() {
+      return this.title !== ''
+      && this.location !== ''
+      && this.imageUrl !== ''
+      && this.description !== '';
     },
-    submittableDateTime () {
-      const date = new Date(this.date)
+    submittableDateTime() {
+      const date = new Date(this.date);
       if (typeof this.time === 'string') {
-        let hours = this.time.match(/^(\d+)/)[1]
-        const minutes = this.time.match(/:(\d+)/)[1]
-        date.setHours(hours)
-        date.setMinutes(minutes)
+        const hours = this.time.match(/^(\d+)/)[1];
+        const minutes = this.time.match(/:(\d+)/)[1];
+        date.setHours(hours);
+        date.setMinutes(minutes);
       } else {
-        date.setHours(this.time.getHours())
-        date.setMinutes(this.time.getMinutes())
+        date.setHours(this.time.getHours());
+        date.setMinutes(this.time.getMinutes());
       }
-      return date
-    }
+      return date;
+    },
   },
   methods: {
-    onCreateMeetup () {
+    onCreateMeetup() {
       if (!this.formIsValid) {
-        return
+        return;
       }
       if (!this.image) {
-        return
+        return;
       }
       const meetupData = {
         title: this.title,
         location: this.location,
         image: this.image,
         description: this.description,
-        date: this.submittableDateTime
-      }
-      this.$store.dispatch('createMeetup', meetupData)
-      this.$router.push('/meetups')
+        date: this.submittableDateTime,
+      };
+      this.$store.dispatch('createMeetup', meetupData);
+      this.$router.push('/meetups');
     },
-    onPickFile () {
-      this.$refs.fileInput.click()
+    onPickFile() {
+      this.$refs.fileInput.click();
     },
-    onFilePicked (event) {
-      const files = event.target.files
-      let filename = files[0].name
+    onFilePicked(event) {
+      const { files } = event.target;
+      const filename = files[0].name;
       if (filename.lastIndexOf('.') <= 0) {
-        return alert('Please add a valid file')
+        return alert('Please add a valid file');
       }
-      const fileReader = new FileReader()
+      const fileReader = new FileReader();
       fileReader.addEventListener('load', () => {
-        this.imageUrl = fileReader.result
-      })
-      fileReader.readAsDataURL(files[0])
-      this.image = files[0]
-    }
-  }
-}
+        this.imageUrl = fileReader.result;
+      });
+      fileReader.readAsDataURL(files[0]);
+      this.image = files[0];
+    },
+  },
+};
 </script>
-

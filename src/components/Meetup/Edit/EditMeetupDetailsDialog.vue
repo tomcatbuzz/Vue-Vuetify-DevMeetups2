@@ -46,27 +46,26 @@
 <script>
 export default {
   props: ['meetup'],
-  data () {
+  data() {
     return {
       editDialog: false,
       editedTitle: this.meetup.title,
-      editedDescription: this.meetup.description
-    }
+      editedDescription: this.meetup.description,
+    };
   },
   methods: {
-    onSaveChanges () {
+    onSaveChanges() {
       if (this.editedTitle.trim() === '' || this.editedDescription.trim() === '') {
-        return
+        return;
       }
-      this.editDialog = false
+      this.editDialog = false;
       this.$store.dispatch('updateMeetupData', {
         id: this.meetup.id,
         title: this.editedTitle,
-        description: this.editedDescription
+        description: this.editedDescription,
 
-      })
-    }
-  }
-}
+      });
+    },
+  },
+};
 </script>
-

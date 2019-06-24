@@ -20,10 +20,10 @@
               :meetup="meetup"></app-edit-meetup-details-dialog>
             </template>
           </v-card-title>
-          <v-card-media
+          <v-img
             :src="meetup.imageUrl"
              height="400px"
-          ></v-card-media>
+          ></v-img>
           <v-card-text>
             <div class="info--text">{{ meetup.date | date }} - {{ meetup.location }}</div>
             <div><app-edit-meetup-date-dialog
@@ -49,26 +49,24 @@
 </template>
 
 <script>
-  export default {
-    props: ['id'],
-    computed: {
-      meetup () {
-        return this.$store.getters.loadedMeetup(this.id)
-      },
-      userIsAuthenticated () {
-        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
-      },
-      userIsCreator () {
-        if (!this.userIsAuthenticated) {
-          return false
-        }
-        return this.$store.getters.user.id === this.meetup.creatorId
-      },
-      loading () {
-        return this.$store.getters.loading
+export default {
+  props: ['id'],
+  computed: {
+    meetup() {
+      return this.$store.getters.loadedMeetup(this.id);
+    },
+    userIsAuthenticated() {
+      return this.$store.getters.user !== null && this.$store.getters.user !== undefined;
+    },
+    userIsCreator() {
+      if (!this.userIsAuthenticated) {
+        return false;
       }
-    }
-  }
+      return this.$store.getters.user.id === this.meetup.creatorId;
+    },
+    loading() {
+      return this.$store.getters.loading;
+    },
+  },
+};
 </script>
-
-

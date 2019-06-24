@@ -14,7 +14,7 @@
         <v-layout row wrap>
           <v-flex xs12>
             <v-date-picker v-model="editableDate" style="width: 100%" actions>
-              <template slot-scope="{save, cancel}">
+              <template v-slot="{save, cancel}">
                 <v-btn
                   class="blue--text darken-1"
                   flat
@@ -35,29 +35,29 @@
 <script>
 export default {
   props: ['meetup'],
-  data () {
+  data() {
     return {
       editDialog: false,
-      editableDate: null
-    }
+      editableDate: null,
+    };
   },
   methods: {
-    onSaveChanges () {
-      const newDate = new Date(this.meetup.date)
-      const newDay = new Date(this.editableDate).getUTCDate()
-      const newMonth = new Date(this.editableDate).getUTCMonth()
-      const newYear = new Date(this.editableDate).getUTCFullYear()
-      newDate.setDate(newDay)
-      newDate.setMonth(newMonth)
-      newDate.setFullYear(newYear)
+    onSaveChanges() {
+      const newDate = new Date(this.meetup.date);
+      const newDay = new Date(this.editableDate).getUTCDate();
+      const newMonth = new Date(this.editableDate).getUTCMonth();
+      const newYear = new Date(this.editableDate).getUTCFullYear();
+      newDate.setDate(newDay);
+      newDate.setMonth(newMonth);
+      newDate.setFullYear(newYear);
       this.$store.dispatch('updateMeetupData', {
         id: this.meetup.id,
-        date: newDate
-      })
-    }
+        date: newDate,
+      });
+    },
   },
-  created () {
-    this.editableDate = new Date(this.meetup.date).toISOString().slice(0, 10)
-  }
-}
+  created() {
+    this.editableDate = new Date(this.meetup.date).toISOString().slice(0, 10);
+  },
+};
 </script>

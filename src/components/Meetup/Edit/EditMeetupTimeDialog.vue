@@ -14,7 +14,7 @@
         <v-layout row wrap>
           <v-flex xs12>
             <v-time-picker v-model="editableTime" style="width: 100%" actions>
-              <template slot-scope="{save, cancel}">
+              <template v-slot="{save, cancel}">
                 <v-btn
                   class="blue--text darken-1"
                   flat
@@ -35,27 +35,27 @@
 <script>
 export default {
   props: ['meetup'],
-  data () {
+  data() {
     return {
       editDialog: false,
-      editableTime: null
-    }
+      editableTime: null,
+    };
   },
   methods: {
-    onSaveChanges () {
-      const newDate = new Date(this.meetup.date)
-      let hours = this.editableTime.match(/^(\d+)/)[1]
-      const minutes = this.editableTime.match(/:(\d+)/)[1]
-      newDate.setHours(hours)
-      newDate.setMinutes(minutes)
+    onSaveChanges() {
+      const newDate = new Date(this.meetup.date);
+      const hours = this.editableTime.match(/^(\d+)/)[1];
+      const minutes = this.editableTime.match(/:(\d+)/)[1];
+      newDate.setHours(hours);
+      newDate.setMinutes(minutes);
       this.$store.dispatch('updateMeetupData', {
         id: this.meetup.id,
-        date: newDate
-      })
-    }
+        date: newDate,
+      });
+    },
   },
-  created () {
-    this.editableTime = new Date(this.meetup.date)
-  }
-}
+  created() {
+    this.editableTime = new Date(this.meetup.date);
+  },
+};
 </script>

@@ -36,10 +36,9 @@
 <script>
 export default {
   computed: {
-    meetups () {
-      return this.$store.getters.loadedMeetups
-    }
-  }
-}
+    meetups() {
+      return this.$store.getters.loadedMeetups;
+    },
+  },
+};
 </script>
-

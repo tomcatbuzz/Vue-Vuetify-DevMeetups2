@@ -54,40 +54,40 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       email: '',
       password: '',
-      confirmPassword: ''
-    }
+      confirmPassword: '',
+    };
   },
   computed: {
-    user () {
-      return this.$store.getters.user
+    user() {
+      return this.$store.getters.user;
     },
-    error () {
-      return this.$store.getters.error
+    error() {
+      return this.$store.getters.error;
     },
-    loading () {
-      return this.$store.getters.loading
-    }
+    loading() {
+      return this.$store.getters.loading;
+    },
   },
   watch: {
-    user (value) {
+    user(value) {
       if (value !== null && value !== undefined) {
-        this.$router.push('/')
+        this.$router.push('/');
       }
-    }
+    },
   },
   methods: {
-    onSignin () {
-      this.$store.dispatch('signUserIn', {email: this.email, password: this.password})
+    onSignin() {
+      this.$store.dispatch('signUserIn', { email: this.email, password: this.password });
     },
-    onDismissed () {
-      this.$store.dispatch('clearError')
-    }
-  }
-}
+    onDismissed() {
+      this.$store.dispatch('clearError');
+    },
+  },
+};
 </script>
 
 <style>
@@ -128,5 +128,3 @@ export default {
     }
   }
 </style>
-
-

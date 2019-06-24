@@ -39,26 +39,25 @@
 <script>
 export default {
   props: ['meetupId'],
-  data () {
+  data() {
     return {
-      registerDialog: false
-    }
+      registerDialog: false,
+    };
   },
   computed: {
-    userIsRegistered () {
-      return this.$store.getters.user.registeredMeetups.findIndex(meetupId => {
-        return meetupId === this.meetupId
-      }) >= 0
-    }
+    userIsRegistered() {
+      return this.$store.getters.user.registeredMeetups
+        .findIndex(meetupId => meetupId === this.meetupId) >= 0;
+    },
   },
   methods: {
-    onAgree () {
+    onAgree() {
       if (this.userIsRegistered) {
-        this.$store.dispatch('unregisterUserFromMeetup', this.meetupId)
+        this.$store.dispatch('unregisterUserFromMeetup', this.meetupId);
       } else {
-        this.$store.dispatch('registerUserForMeetup', this.meetupId)
+        this.$store.dispatch('registerUserForMeetup', this.meetupId);
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>

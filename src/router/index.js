@@ -1,13 +1,13 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from '@/components/Home'
-import Meetups from '@/components/Meetup/Meetups'
-import CreateMeetup from '@/components/Meetup/CreateMeetup'
-import Meetup from '@/components/Meetup/Meetup'
-import Profile from '@/components/User/Profile'
-import Signup from '@/components/User/Signup'
-import Signin from '@/components/User/Signin'
-import AuthGuard from './auth-guard'
+import Home from '@/components/Home.vue';
+import Meetups from '@/components/Meetup/Meetups.vue';
+import CreateMeetup from '@/components/Meetup/CreateMeetup.vue';
+import Meetup from '@/components/Meetup/Meetup.vue';
+import Profile from '@/components/User/Profile.vue';
+import Signup from '@/components/User/Signup.vue';
+import Signin from '@/components/User/Signin.vue';
+import AuthGuard from './auth-guard';
 
 Vue.use(Router);
 
@@ -29,7 +29,7 @@ export default new Router({
       path: '/meetup/new',
       name: 'CreateMeetup',
       component: CreateMeetup,
-      beforeEnter: AuthGuard
+      beforeEnter: AuthGuard,
     },
     {
       path: '/meetups/:id',
@@ -41,7 +41,7 @@ export default new Router({
       path: '/profile',
       name: 'Profile',
       component: Profile,
-      beforeEnter: AuthGuard
+      beforeEnter: AuthGuard,
     },
     {
       path: '/signup',
@@ -52,6 +52,6 @@ export default new Router({
       path: '/signin',
       name: 'Signin',
       component: Signin,
-    }
+    },
   ],
 });

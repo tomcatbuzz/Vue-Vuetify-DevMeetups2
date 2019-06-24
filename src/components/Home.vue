@@ -44,19 +44,19 @@
 <script>
 export default {
   computed: {
-    meetups () {
-      return this.$store.getters.featuredMeetups
+    meetups() {
+      return this.$store.getters.featuredMeetups;
     },
-    loading () {
-      return this.$store.getters.loading
-    }
+    loading() {
+      return this.$store.getters.loading;
+    },
   },
   methods: {
-    onLoadMeetup (id) {
-      this.$router.push('/meetups/' + id)
-    }
-  }
-}
+    onLoadMeetup(id) {
+      this.$router.push(`/meetups/${id}`);
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -71,4 +71,3 @@ export default {
   transform: translate(-50%, 0);
   }
 </style>
-

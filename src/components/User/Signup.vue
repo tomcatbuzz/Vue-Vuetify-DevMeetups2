@@ -65,43 +65,43 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       email: '',
       password: '',
-      confirmPassword: ''
-    }
+      confirmPassword: '',
+    };
   },
   computed: {
-    comparePasswords () {
-      return this.password !== this.confirmPassword ? 'Passwords do not match' : ''
+    comparePasswords() {
+      return this.password !== this.confirmPassword ? 'Passwords do not match' : '';
     },
-    user () {
-      return this.$store.getters.user
+    user() {
+      return this.$store.getters.user;
     },
-    error () {
-      return this.$store.getters.error
+    error() {
+      return this.$store.getters.error;
     },
-    loading () {
-      return this.$store.getters.loading
-    }
+    loading() {
+      return this.$store.getters.loading;
+    },
   },
   watch: {
-    user (value) {
+    user(value) {
       if (value !== null && value !== undefined) {
-        this.$router.push('/')
+        this.$router.push('/');
       }
-    }
+    },
   },
   methods: {
-    onSignup () {
-      this.$store.dispatch('signUserUp', {email: this.email, password: this.password})
+    onSignup() {
+      this.$store.dispatch('signUserUp', { email: this.email, password: this.password });
     },
-    onDismissed () {
-      this.$store.dispatch('clearError')
-    }
-  }
-}
+    onDismissed() {
+      this.$store.dispatch('clearError');
+    },
+  },
+};
 </script>
 
 <style>
