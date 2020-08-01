@@ -28,12 +28,13 @@ new Vue({
   render: h => h(App),
   created() {
     firebase.initializeApp({
-      apiKey: 'YOUR KEY HERE',
+      apiKey: 'AIzaSyC6I8Z57iW99Beu6T9uhlwmhcmakZnXlc0',
       authDomain: 'vue-devmeetups.firebaseapp.com',
       databaseURL: 'https://vue-devmeetups.firebaseio.com',
       projectId: 'vue-devmeetups',
       storageBucket: 'vue-devmeetups.appspot.com',
-      
+      messagingSenderId: '471389874515',
+      appId: '1:471389874515:web:21f5618110cf2f1f',
     });
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
